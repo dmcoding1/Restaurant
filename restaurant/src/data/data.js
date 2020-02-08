@@ -10,3 +10,4 @@ module.exports.tables = [
         name: "Stoł z powyłamywanymi nogami"
     }
 ];
+
