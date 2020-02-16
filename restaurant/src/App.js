@@ -1,12 +1,17 @@
 import React from 'react';
-import Form from './Components/Form';
+import Navbar from './Components/Navbar';
+import Reservation from './Components/Reservation';
+import ReservationContextProvider from './Contexts/ReservationContextProvider';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <Form />
-    </div>
+    <>
+      <Navbar />
+      <ReservationContextProvider>
+        <Reservation />
+      </ReservationContextProvider>   
+    </>
   );
 }
 

@@ -1,0 +1,17 @@
+.reservation {
+  
+  &__header {
+    margin-bottom: 3.5rem;
+    width: 40.5rem;
+    margin-left: 12.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  &__heading {
+    font-size: 4rem;
+    text-transform: uppercase;
+    color: white;
+  }
+}

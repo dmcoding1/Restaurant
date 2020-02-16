@@ -1,0 +1,17 @@
+import React from "react";
+
+const InputSelect = () => {
+  return (
+    <>
+    <label htmlFor="people" className="reservation__label">No. of people</label>
+    <select id="people" className="reservation__select">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+    </select>
+    </>
+  );
+}
+
+export default InputSelect;

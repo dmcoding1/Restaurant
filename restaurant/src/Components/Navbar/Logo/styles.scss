@@ -1,0 +1,66 @@
+.main-nav {
+  &__logo {
+    position: absolute;
+    width: 10rem;
+    height: 10rem;
+    top: -1.4rem;
+    left: 0.5rem;
+    text-decoration: none;
+    outline: none;
+    transition: transform .3s ease;
+    
+    &::before {
+      content: "";
+      position: absolute;
+      width: 10rem;
+      height: 10rem;
+      border-radius: 50%;
+      background-color: #6A3636;
+      outline: none;    
+      opacity: .65;
+      transition: opacity .3s ease;
+   }
+    
+    &:hover, &:focus {
+      transform: rotate(-15deg);
+    }
+    
+    &:hover::before, &:focus::before {
+      opacity: 1;       
+    }
+    
+    span {
+      position: relative;
+      margin: 0;
+      padding: 0;
+      line-height: 0;
+      display: block;
+      font-size: 1.6rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: .1rem;
+      top: 6rem;
+      color: white;
+    }
+    
+    span:first-child {
+      top: 3.8rem;
+      left: 2rem;
+    }
+    
+    span:nth-child(2) {
+      left: 2.4rem;
+      color: #16AE25;
+    }
+    
+    span:nth-child(3) {
+      left: 5.2rem;
+    }
+    
+    span:last-child {
+      left: 6.8rem;
+      color: #E30909;
+    }
+    
+  }
+}

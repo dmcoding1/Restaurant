@@ -1,0 +1,180 @@
+.reservation {
+  min-height: 100vh;
+  overflow: hidden;
+  background: url(../../images/reservation.webp) no-repeat;
+  background-position: center;
+  background-size: cover;
+  
+  &__container {
+    height: 100%;
+    width: 80%;
+    max-width: 1140px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+  }
+  
+  &__form {
+    width: 40.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 12.5rem;
+  }
+  
+  &__input, &__select {
+    width: 100%;
+    background-color: transparent;
+    border: 3px solid black;
+    padding-left: 1rem;
+    margin: 0.5rem 0 1rem;
+    font-size: 2.5rem;
+    color: white;
+    outline: none;
+    opacity: 0.3;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    transition: opacity .2s ease-in;
+
+    &:focus, &:hover {
+      opacity: 1;
+    }
+  }
+  
+  &__select {
+    option {
+      background-color: brown;
+    }
+  }  
+  
+  &__label, &__radio-label {
+    font-size: 2.5rem;
+    color: white;
+    line-height: 1.2;
+  }
+  
+  input[type="date"] {
+    &::-webkit-inner-spin-button {
+      height: auto;
+      cursor: pointer;
+    }
+    
+    &::-webkit-calendar-picker-indicator {
+      background: none;
+      cursor: pointer;
+    }
+
+  }
+  
+  &__hours {
+    position: relative;
+    width: 35rem;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0.5rem 0 0;
+  }
+  
+  &__radio-label {
+    display: inline-block;
+    width: 6rem;
+    height: 6rem;
+    margin: 0 0.7rem 0.7rem 0;
+    text-align: center;
+    font-weight: bold;
+    line-height: 6rem;
+    border-radius: 50%;
+    outline: none;
+    background-color: #27731A;
+    opacity: .5;
+    cursor: pointer;
+    user-select: none;
+    transition: opacity .2s ease-in, transform .2s ease-in;
+    
+    
+    &--disabled {
+      background-color: #751414;
+      opacity: .6;
+      cursor: not-allowed;
+    }
+    
+    &:hover, &:focus {
+      opacity: .8;
+    }
+  }
+  
+  &__radio {
+    width: 0;
+    position: fixed;
+    opacity: 0;
+    
+    &:focus + label, &:checked + label {
+      opacity: .8;
+      transform: scale(1.1);
+    }    
+  }
+  
+  &__legend {
+    position: absolute;
+    left: 140%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #fff;
+    
+    .available, .taken {
+      position: relative;
+    }
+    
+    .available::before, .taken::before {
+      content: "";
+      position: absolute;
+      display: block;
+      top: -50%;
+      left: -25%;
+      width: 6rem;
+      height: 6rem;
+      z-index: -1;
+      border-radius: 50%;
+    }
+    
+    .available::before {
+      background-color: #27731A;
+      opacity: .5;
+    }
+    
+    .taken::before {
+      background-color: #751414;
+      opacity: .6;
+    }
+  }
+  
+  &__btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  &__text-container {
+    margin-left: 12.5rem;
+  }
+  
+  &__text {
+    width: 40.5rem;
+    padding: 2rem 0;
+    font-size: 2.5rem;
+    color: white;
+    line-height: 1.2;
+  }
+  
+  
+  
+  
+}
+
