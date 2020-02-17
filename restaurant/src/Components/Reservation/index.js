@@ -21,7 +21,7 @@ const Reservation = () => {
   }
 
   return (
-    <section className="reservation">
+    <section className="reservation" id="reservation">
 
       <div className="reservation__container">
         {renderFormPage(context.currentFormPage)}

@@ -15,7 +15,7 @@ const MainNav = () => {
           <a href="#">Our Team</a>
         </li>
         <li className="main-nav__link">
-          <a href="#">Reservation</a>
+          <a href="#reservation">Reservation</a>
         </li>
         <li className="main-nav__link">
           <a href="#">Location</a>

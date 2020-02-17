@@ -25,9 +25,9 @@
       transform: rotate(-15deg);
     }
     
-    &:hover::before, &:focus::before {
-      opacity: 1;       
-    }
+    // &:hover::before, &:focus::before {
+    //   opacity: 1;       
+    // }
     
     span {
       position: relative;
