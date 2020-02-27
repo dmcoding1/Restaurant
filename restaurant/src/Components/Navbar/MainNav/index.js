@@ -2,23 +2,24 @@ import React from "react";
 import "./styles.scss";
 
 const MainNav = () => {
+
   return (
     <div className="main-nav__links">
       <ul className="main-nav__list">
         <li className="main-nav__link">
-          <a href="#">Menu</a>
+          <a href="#menu">Menu</a>
         </li>
         <li className="main-nav__link">
-          <a href="#">About</a>
+          <a href="#about">About</a>
         </li>
         <li className="main-nav__link">
-          <a href="#">Our Team</a>
+          <a href="#team">Our Team</a>
         </li>
         <li className="main-nav__link">
           <a href="#reservation">Reservation</a>
         </li>
         <li className="main-nav__link">
-          <a href="#">Location</a>
+          <a href="#location">Location</a>
         </li>
       </ul>
     </div>

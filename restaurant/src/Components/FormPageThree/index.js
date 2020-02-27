@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import FormHeader from "../FormHeader";
 import Button from "../Button";
-import ReservationContext from '../../Contexts/ReservationContext';
+import ReservationContext from '../../Context/ReservationContext';
 
 const FormPageThree = () => {
 
@@ -22,7 +22,7 @@ const FormPageThree = () => {
         <p className="reservation__text">
           Do you want to book another table?
         </p>
-        <Button className="reservation__btn" text="Reservation" onClick={handleClick}/>
+        <Button className="btn" text="Reservation" onClick={handleClick}/>
       </div>
     </>
   );

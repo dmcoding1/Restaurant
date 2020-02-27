@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import ReservationContext from "../../../Context/ReservationContext";
 
-function EmailInput() {
+const EmailInput = () => {
+
+  const { setEmail } = useContext(ReservationContext);
+
+  const handleChange = e => setEmail(e.target.value);
+
   return (
     <>
     <label htmlFor="email" className="reservation__label">
@@ -11,6 +17,9 @@ function EmailInput() {
           className="reservation__input"
           id="email"
           required
+          pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" 
+          inputmode="email"
+          onChange={handleChange}
         />
     </>
   );

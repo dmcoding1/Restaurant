@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
+import ReservationContext from "../../../Context/ReservationContext";
 
 const InputName = () => {
+
+  const { setName } = useContext(ReservationContext);
+
+  const handleChange = e => setName(e.target.value);
+
   return (
     <>
       <label htmlFor="name" className="reservation__label">
         Name
       </label>
-      <input type="text" className="reservation__input" id="name" required />
+      <input type="text" className="reservation__input" id="name" required onChange={handleChange} />
     </>
   );
 };

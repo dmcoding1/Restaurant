@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import ReservationContext from "../../../Context/ReservationContext";
 
 const InputPhone = () => {
+
+  const { setPhone } = useContext(ReservationContext);
+
+  const handleChange = e => setPhone(e.target.value);
+
   return (
     <>
       <label htmlFor="phone" className="reservation__label">
@@ -10,8 +16,10 @@ const InputPhone = () => {
         type="tel"
         className="reservation__input"
         id="phone"
-        pattern="[0-9]{9}"
         required
+        pattern="([+]?\d{1,2}[.-\s]?)?(\d{3}[.-\s]?){2}\d{3}" 
+        inputmode="tel"
+        onChange={handleChange}
       />
     </>
   );

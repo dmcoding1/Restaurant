@@ -4,7 +4,7 @@ import FormPageOne from "../FormPageOne";
 import FormPageTwo from "../FormPageTwo";
 import FormPageThree from "../FormPageThree";
 import Loader from "../Loader";
-import ReservationContext from "../../Contexts/ReservationContext";
+import ReservationContext from "../../Context/ReservationContext";
 
 const Reservation = () => {
   const context = useContext(ReservationContext);
@@ -21,7 +21,7 @@ const Reservation = () => {
   }
 
   return (
-    <section className="reservation" id="reservation">
+    <section className="reservation" id="reservation" data-src="/images/reservation.jpg">
 
       <div className="reservation__container">
         {renderFormPage(context.currentFormPage)}

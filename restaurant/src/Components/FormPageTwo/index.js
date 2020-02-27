@@ -3,7 +3,7 @@ import InputName from "./InputName";
 import InputEmail from "./InputEmail";
 import InputPhone from "./InputPhone";
 import Button from "../Button";
-import ReservationContext from '../../Contexts/ReservationContext';
+import ReservationContext from '../../Context/ReservationContext';
 
 const FormPageTwo = () => {
 
@@ -28,7 +28,7 @@ const FormPageTwo = () => {
       <header className="reservation__header">
         <h3 className="reservation__heading">Details</h3>
         <button
-          className="reservation__btn reservation__btn--back"
+          className="btn btn--back"
           data-text="Back"
           onClick={() => setCurrentFormPage(1)}
         >
@@ -42,12 +42,12 @@ const FormPageTwo = () => {
         <InputPhone />
         <div className="reservation__btn-container">
           <Button
-            className="reservation__btn reservation__btn--confirm"
+            className="btn btn--confirm"
             type="submit"
             text="Book a table"
           />
           <Button
-            className="reservation__btn reservation__btn--cancel"
+            className="btn btn--cancel"
             text="Cancel"
             onClick={handleCancel}
           />

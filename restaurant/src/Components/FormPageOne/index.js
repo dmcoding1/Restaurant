@@ -4,7 +4,7 @@ import InputSelect from './InputSelect';
 import InputDate from './InputDate';
 import InputHour from './InputHour';
 import Button from '../Button';
-import ReservationContext from '../../Contexts/ReservationContext';
+import ReservationContext from '../../Context/ReservationContext';
 
 
 const FormPageOne = () => {
@@ -24,7 +24,7 @@ const FormPageOne = () => {
           <InputSelect />
           <InputDate />
           <InputHour />
-          <Button className="reservation__btn" text="Get a table"/>
+          <Button className="btn" text="Get a table"/>
         </form>
     </>
   )

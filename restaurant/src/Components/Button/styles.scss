@@ -1,8 +1,9 @@
-.reservation {
-  &__btn {
+
+.btn {
     position: relative;
     width: 26rem;
     margin-top: 3.5rem;
+    font-family: 'Poppins', sans-serif;
     font-size: 2.5rem;
     font-weight: bold;
     line-height: 6rem;
@@ -54,6 +55,10 @@
       opacity: 0.8;
       transform: translateY(-5%);
     }
+
+    &:active::before, &:active::after {
+      transform: translateY(3%);
+    }
     
     &--back {
       margin: 0;
@@ -76,6 +81,10 @@
         transform: translateY(-5%);
         opacity: .9;
       }
+
+      &:active {
+        transform: translateY(3%);
+      }
       
       &::before, &::after {
         display: none;
@@ -93,4 +102,3 @@
       }
     
   }
-}

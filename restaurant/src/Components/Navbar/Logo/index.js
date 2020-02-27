@@ -3,7 +3,7 @@ import "./styles.scss";
 
 const Logo = () => {
   return (
-    <a className="main-nav__logo" href="#">
+    <a className="main-nav__logo" href="#home">
       <span>Fresh</span>
       <span>Ita</span>
       <span>li</span>
