@@ -1,8 +1,11 @@
 const sqlite = require("sqlite");
 const express = require('express');
+const cors = require('cors');
 
 
 const app = express();
+app.use(cors());
+app.use(express.json());
 const port = process.env.PORT || 3100;
 
 app.get('/tables', async (request, response) => {
