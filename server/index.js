@@ -11,6 +11,12 @@ app.get('/tables', async (request, response) => {
     response.send(results);
 });
 
+function formatDate(timestampDate) {
+    const tmpDate = new Date(timestampDate);
+    const reservationDate = `${tmpDate.getFullYear()}-${tmpDate.getMonth() < 9 ? '0' : ''}${(tmpDate.getMonth() + 1)}-${tmpDate.getDate() < 10 ? '0' : ''}${tmpDate.getDate()}`;
+    console.log(reservationDate);
+}
+
 app.get('/tables/available', async (request, response) => {
     const db = await sqlite.open("./db/database.sqlite");
     console.log(request.query);
@@ -35,6 +41,10 @@ app.get('/tables/available', async (request, response) => {
         }
     });
     response.send(postResults);
+});
+
+app.post('/reservation', async (request, response) => {
+    console.log(request.body);
 });
 
 
