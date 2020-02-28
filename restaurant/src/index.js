@@ -4,6 +4,9 @@ import './styles/main.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+const img = document.createElement("img");
+img.src = "/images/header-small.jpg";
+
 ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
