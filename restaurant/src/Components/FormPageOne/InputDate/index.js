@@ -5,11 +5,12 @@ import ReservationContext from "../../../Context/ReservationContext";
 import "react-nice-dates/build/style.css";
 
 const InputDate = () => {
-  const { date, setDate, getDataFromDb } = useContext(ReservationContext);
+  const { date, setDate, hour, setTimestamp, getDataFromDb } = useContext(ReservationContext);
 
   const fetchData = date => {
     setDate();
-    getDataFromDb(date);
+    setTimestamp(date.getTime() + (hour.split(":")[0] * 60 * 60 * 1000));
+    //getDataFromDb(date);
   };
 
 

@@ -10,6 +10,20 @@ const ReservationContextProvider = (props) => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [timestamp, setTimestamp] = useState(0);
+
+  const reservationData = {
+    email,
+    capacity: numberOfPeople,
+    timestamp
+  }
+
+  const postData = () => {
+    fetch("//localhost/3100/reservation", {
+      method: "POST",
+      body: JSON.stringify(reservationData)
+    })
+  }
 
   const getDataFromDb = date => {
     fetch(`//localhost:3100/tables/available?reservationDate=${date.getTime()}`)
@@ -32,7 +46,9 @@ const ReservationContextProvider = (props) => {
       setHour,
       setName,
       setEmail,
-      setPhone
+      setPhone,
+      setTimestamp,
+      postData
     }}>
       {props.children}
     </ReservationContext.Provider>

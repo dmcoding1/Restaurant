@@ -7,7 +7,7 @@ import ReservationContext from '../../Context/ReservationContext';
 
 const FormPageTwo = () => {
 
-  const { setIsLoading, setCurrentFormPage } = useContext(ReservationContext);
+  const { setIsLoading, setCurrentFormPage, postData } = useContext(ReservationContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -45,6 +45,7 @@ const FormPageTwo = () => {
             className="btn btn--confirm"
             type="submit"
             text="Book a table"
+            onClick={postData}
           />
           <Button
             className="btn btn--cancel"
