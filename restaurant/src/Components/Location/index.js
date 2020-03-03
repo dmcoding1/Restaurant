@@ -7,7 +7,15 @@ import key from "../../key.js";
 const Location = () => {
 
   useEffect(() => {
-    const myMap = L.map("map").setView([37.7749, -122.4194], 13);
+    const myMap = L.map("map").setView([43.638562, -84.234599], 15);
+
+    delete L.Icon.Default.prototype._getIconUrl;
+
+    L.Icon.Default.mergeOptions({
+      iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
+      iconUrl: require("leaflet/dist/images/marker-icon.png"),
+      shadowUrl: require("leaflet/dist/images/marker-shadow.png")
+    });
 
     L.tileLayer(
       `https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=${key}`,
@@ -19,6 +27,11 @@ const Location = () => {
         accessToken: key
       }
     ).addTo(myMap);
+
+    const marker = L.marker([43.638562, -84.234599], {alt: "Location marker"}).addTo(myMap);
+
+    marker.bindPopup("<b>Fresh Italian</b><br>Dinners, desserts and drinks").openPopup();
+
   }, []);
 
   return (
@@ -28,7 +41,7 @@ const Location = () => {
           <div className="location__address">
             <div className="location__heading">Location</div>
             <div className="location__text">Fresh Italian<br />
-            718  Mount Street<br />Midland,  Michigan 48640<br />
+            718 W Meadowbrook Dr<br />Midland, Michigan 48640<br />
             TEL: 989-638-5139
             </div>
           </div>

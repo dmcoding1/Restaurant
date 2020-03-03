@@ -1,0 +1,21 @@
+.nice-dates {
+  width: 100%;
+
+  &-navigation, &-day {
+    color: #111;
+  }
+
+  &-popover {
+    border-radius: 2px;
+    max-width: 30.5rem;
+    padding: 0 1rem 1rem;
+  }
+}
+
+.nice-dates-day:before {
+  background: #27731a;
+}
+
+.nice-dates-day:after {
+  border-color: #27731a;
+}

@@ -3,7 +3,7 @@ import ReservationContext from "../../../Context/ReservationContext";
 
 const InputName = () => {
 
-  const { setName } = useContext(ReservationContext);
+  const { name, setName } = useContext(ReservationContext);
 
   const handleChange = e => setName(e.target.value);
 
@@ -12,7 +12,7 @@ const InputName = () => {
       <label htmlFor="name" className="reservation__label">
         Name
       </label>
-      <input type="text" className="reservation__input" id="name" required onChange={handleChange} />
+      <input type="text" className="reservation__input" id="name" value={name} required onChange={handleChange} />
     </>
   );
 };

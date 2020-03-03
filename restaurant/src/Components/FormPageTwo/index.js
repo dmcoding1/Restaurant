@@ -1,27 +1,42 @@
-import React, { useContext } from 'react';
+import React, { useContext } from "react";
 import InputName from "./InputName";
 import InputEmail from "./InputEmail";
 import InputPhone from "./InputPhone";
 import Button from "../Button";
-import ReservationContext from '../../Context/ReservationContext';
+import ReservationContext from "../../Context/ReservationContext";
 
 const FormPageTwo = () => {
+  const {
+    setIsLoading,
+    setCurrentFormPage,
+    postData,
+    setNumberOfPeople,
+    setDate,
+    setHour,
+    setEmail,
+    setName,
+    setPhone
+  } = useContext(ReservationContext);
 
-  const { setIsLoading, setCurrentFormPage, postData } = useContext(ReservationContext);
-
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     setIsLoading(true);
     setCurrentFormPage(3);
     setIsLoading(false);
   };
 
-  const handleCancel = (e) => {
+  const handleCancel = e => {
     e.preventDefault();
     setIsLoading(true);
+    setNumberOfPeople(2);
+    setDate(new Date());
+    setHour(null);
+    setEmail("");
+    setName("");
+    setPhone();
     setCurrentFormPage(1);
     setIsLoading(false);
-  }
+  };
 
   return (
     <>

@@ -1,4 +1,5 @@
 const lazyLoadImages = () => {
+  
   const images = document.querySelectorAll("[data-src]");
 
   const observerCallback = (entries, observer) => {

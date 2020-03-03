@@ -1,4 +1,5 @@
 const highlightSectionsOnScroll = () => {
+  
   const sections = document.querySelectorAll("section");
   const navLinks = document.querySelectorAll(".main-nav__link a");
 

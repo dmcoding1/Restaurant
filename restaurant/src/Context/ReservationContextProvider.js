@@ -5,22 +5,24 @@ const ReservationContextProvider = (props) => {
   const [currentFormPage, setCurrentFormPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [numberOfPeople, setNumberOfPeople] = useState(2);
-  const [date, setDate] = useState(new Date());
+  const [currentDate, setDate] = useState(new Date());
   const [hour, setHour] = useState("");
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [timestamp, setTimestamp] = useState(0);
 
   const reservationData = {
     email,
     capacity: numberOfPeople,
-    timestamp
+    timestamp: currentDate.getTime() + (hour ? hour * 60 * 60 * 1000 : 0)
   }
 
   const postData = () => {
-    fetch("//localhost/3100/reservation", {
+    fetch("//localhost:3100/reservation", {
       method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify(reservationData)
     })
   }
@@ -40,14 +42,13 @@ const ReservationContextProvider = (props) => {
       getDataFromDb,
       numberOfPeople,
       setNumberOfPeople,
-      date,
+      currentDate,
       setDate,
       hour,
       setHour,
       setName,
       setEmail,
       setPhone,
-      setTimestamp,
       postData
     }}>
       {props.children}

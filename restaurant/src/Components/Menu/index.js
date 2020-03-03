@@ -5,7 +5,7 @@ import "./styles.scss";
 
 const Menu = () => {
   const [menuCard, setMenuCard] = useState("dinners");
-  const [backgroundColor, setbackgroundColor] = useState("#AFF0AE");
+  const [backgroundColor, setBackgroundColor] = useState("#AFF0AE");
 
   const generateCard = (name) => {
     switch(name) {
@@ -20,17 +20,17 @@ const Menu = () => {
 
   const handleChangeToDinners = () => {
     setMenuCard("dinners");
-    setbackgroundColor("#AFF0AE");
+    setBackgroundColor("#AFF0AE");
   }
 
   const handleChangeToDesserts = () => {
     setMenuCard("desserts");
-    setbackgroundColor("#FFFFFF");
+    setBackgroundColor("#FFFFFF");
   }
 
   const handleChangeToDrinks = () => {
     setMenuCard("drinks");
-    setbackgroundColor("#DEBCBC");
+    setBackgroundColor("#F3DFDF");
   }
 
   const imageContainer = useRef();

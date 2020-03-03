@@ -3,19 +3,13 @@ import { enGB } from "date-fns/locale";
 import { DatePicker } from "react-nice-dates";
 import ReservationContext from "../../../Context/ReservationContext";
 import "react-nice-dates/build/style.css";
+import "./styles.scss";
 
 const InputDate = () => {
-  const { date, setDate, hour, setTimestamp, getDataFromDb } = useContext(ReservationContext);
-
-  const fetchData = date => {
-    setDate();
-    setTimestamp(date.getTime() + (hour.split(":")[0] * 60 * 60 * 1000));
-    //getDataFromDb(date);
-  };
-
+  const { currentDate, setDate } = useContext(ReservationContext);
 
   return (
-    <DatePicker date={date} onDateChange={fetchData} locale={enGB} minimumDate={new Date()}>
+    <DatePicker date={currentDate} onDateChange={setDate} locale={enGB} minimumDate={new Date()}>
       {({ inputProps, focused }) => (
         <>
           <label htmlFor="date" className="reservation__label">

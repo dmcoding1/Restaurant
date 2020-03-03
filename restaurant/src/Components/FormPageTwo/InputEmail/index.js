@@ -3,7 +3,7 @@ import ReservationContext from "../../../Context/ReservationContext";
 
 const EmailInput = () => {
 
-  const { setEmail } = useContext(ReservationContext);
+  const { email, setEmail } = useContext(ReservationContext);
 
   const handleChange = e => setEmail(e.target.value);
 
@@ -16,9 +16,10 @@ const EmailInput = () => {
           type="email"
           className="reservation__input"
           id="email"
+          value={email}
           required
           pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$" 
-          inputmode="email"
+          inputMode="email"
           onChange={handleChange}
         />
     </>

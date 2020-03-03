@@ -8,6 +8,7 @@ import About from "./Components/About";
 import Team from "./Components/Team";
 import Location from "./Components/Location";
 import Footer from "./Components/Footer";
+import "intersection-observer";
 import hightlightSectionsOnScroll from "./helpers/sectionsObserver";
 import lazyLoadImages from "./helpers/imagesObserver";
 import animateNavbar from "./helpers/navbarObserver";

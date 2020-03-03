@@ -3,7 +3,7 @@ import ReservationContext from "../../../Context/ReservationContext";
 
 const InputPhone = () => {
 
-  const { setPhone } = useContext(ReservationContext);
+  const { phone, setPhone } = useContext(ReservationContext);
 
   const handleChange = e => setPhone(e.target.value);
 
@@ -16,9 +16,10 @@ const InputPhone = () => {
         type="tel"
         className="reservation__input"
         id="phone"
+        value={phone}
         required
         pattern="([+]?\d{1,2}[.-\s]?)?(\d{3}[.-\s]?){2}\d{3}" 
-        inputmode="tel"
+        inputMode="tel"
         onChange={handleChange}
       />
     </>

@@ -23,7 +23,6 @@ const InputHour = () => {
 
   const handleChange = e => {
     setHour(e.target.value);
-    console.log(hour);
   }
 
   const generateHourInputs = (takenHours) => {
@@ -35,10 +34,10 @@ const InputHour = () => {
           type="radio"
           className="reservation__radio"
           id={`${i === 12 ? 12 : (i - 12)}`}
-          value={`${i}:00`}
+          value={i}
           name="hour"
           disabled={takenHours.includes(`${i}`)}
-          defaultChecked={i === getEarliestAvailableHour(Object.keys(mockTableData))}
+          checked={hour ? i === +hour : i === getEarliestAvailableHour(Object.keys(mockTableData))}
           onChange={handleChange}
         />
       );
@@ -59,7 +58,7 @@ const InputHour = () => {
   useEffect(() => {    
     if (!hour) {
       const defaultHour = getEarliestAvailableHour(Object.keys(mockTableData));
-      setHour(`${defaultHour}:00`);
+      setHour(defaultHour);
     }      
   });
 
