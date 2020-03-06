@@ -2,14 +2,17 @@ import React, { useContext, useEffect } from "react";
 import ReservationContext from "../../../Context/ReservationContext";
 
 const InputHour = () => {
-  const mockTableData = {
-    "12": true,
-    "13": true,
-    "15": true,
-    "20": true
-  };
+  
 
-  const { hour, setHour } = useContext(ReservationContext);
+  const { currentDate, hour, setHour, takenHoursObj, getDataFromDb } = useContext(ReservationContext);
+
+  // const mockTableData = {
+  //   "12": true,
+  //   "13": true,
+  //   "15": true,
+  //   "20": true
+  // };
+
 
   const getEarliestAvailableHour = (takenHours) => {
     let min = 21;
@@ -36,8 +39,8 @@ const InputHour = () => {
           id={`${i === 12 ? 12 : (i - 12)}`}
           value={i}
           name="hour"
-          disabled={takenHours.includes(`${i}`)}
-          checked={hour ? i === +hour : i === getEarliestAvailableHour(Object.keys(mockTableData))}
+          disabled={Object.keys(takenHoursObj).includes(`${i}:00`)}
+          checked={hour ? i === +hour : i === getEarliestAvailableHour(Object.keys(takenHoursObj))}
           onChange={handleChange}
         />
       );
@@ -55,12 +58,14 @@ const InputHour = () => {
     return output;
   };
 
-  useEffect(() => {    
+  useEffect(() => {  
+    getDataFromDb();
+    console.log(takenHoursObj);
     if (!hour) {
-      const defaultHour = getEarliestAvailableHour(Object.keys(mockTableData));
+      const defaultHour = getEarliestAvailableHour(Object.keys(takenHoursObj));
       setHour(defaultHour);
     }      
-  });
+  }, [currentDate]);
 
   return (
     <>
@@ -70,7 +75,7 @@ const InputHour = () => {
           <div className="available">Available</div>
           <div className="taken">Taken</div>
         </legend>
-        {generateHourInputs(Object.keys(mockTableData))}
+        {generateHourInputs(Object.keys(takenHoursObj))}
       </div>
     </>
   );
