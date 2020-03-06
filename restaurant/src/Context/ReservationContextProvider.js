@@ -14,7 +14,7 @@ const ReservationContextProvider = (props) => {
   const reservationData = {
     email,
     capacity: numberOfPeople,
-    timestamp: currentDate.getTime() + (hour ? hour * 60 * 60 * 1000 : 0)
+    timestamp: currentDate.setHours(0, 0, 0, 0) + (hour ? hour * 60 * 60 * 1000 : 0)
   }
 
   const postData = () => {
