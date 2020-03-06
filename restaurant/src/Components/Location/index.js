@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import L from "leaflet/dist/leaflet.js";
 import "leaflet/dist/leaflet.css";
 import "./styles.scss";
-import key from "../../key.js";
+const key = "";
 
 const Location = () => {
 

@@ -14,10 +14,13 @@ app.get('/tables', async (request, response) => {
     response.send(results);
 });
 
-function formatDate(timestampDate) {
+function formatDate(timestampDate, withTime = false) {
     const tmpDate = new Date(timestampDate);
-    const reservationDate = `${tmpDate.getFullYear()}-${tmpDate.getMonth() < 9 ? '0' : ''}${(tmpDate.getMonth() + 1)}-${tmpDate.getDate() < 10 ? '0' : ''}${tmpDate.getDate()}`;
-    console.log(reservationDate);
+    let reservationDate = `${tmpDate.getFullYear()}-${tmpDate.getMonth() < 9 ? '0' : ''}${(tmpDate.getMonth() + 1)}-${tmpDate.getDate() < 10 ? '0' : ''}${tmpDate.getDate()}`;
+    if (withTime) {
+        reservationDate += ` ${tmpDate.getHours() < 10 ? '0' : ''}${tmpDate.getHours()}:${tmpDate.getMinutes() < 10 ? '0' : ''}${tmpDate.getMinutes()}`;
+    }
+    return reservationDate;
 }
 
 app.get('/tables/available', async (request, response) => {
@@ -47,8 +50,39 @@ app.get('/tables/available', async (request, response) => {
 });
 
 app.post('/reservation', async (request, response) => {
-    console.log(request.body);
+    try {
+        console.log(request.body);
+        const {timestamp, email} = request.body;
+        const reservationDate = formatDate(timestamp, true);
+        const db = await sqlite.open("./db/database.sqlite");
+        console.log(`SELECT id FROM Clients WHERE email='${email}'`);
+        console.log(`SELECT id FROM Reservation WHERE reservation_time='${reservationDate}'`);
+        const [client, reservation] = await Promise.all([
+            db.get(`SELECT id FROM Clients WHERE email='${email}'`),
+            db.get(`SELECT * FROM Reservation WHERE reservation_time='${reservationDate}'`)
+        ]);
+
+        if(!reservation) {
+            if (!client) {
+                const result = await db.exec(`INSERT INTO Clients(email) VALUES('${email}')`);
+                console.log(result);
+            } else {
+                console.log(`INSERT INTO Reservation(client_id, reservation_time) VALUES(${client.id}, '${reservationDate}')`);
+                const result = await db.exec(`INSERT INTO Reservation(client_id, reservation_time) VALUES(${client.id}, '${reservationDate}')`);
+                console.log("insert reservation", result);
+            }
+        } else {
+            response.send({message: "Not a chance!"});
+        }
+        
+
+    } catch(error) {
+        console.error(error);
+        response.sendStatus(500);
+    }
+
 });
 
 
 app.listen(port);
+console.log("Server ready!");

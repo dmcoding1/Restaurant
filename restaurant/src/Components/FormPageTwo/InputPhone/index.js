@@ -18,7 +18,7 @@ const InputPhone = () => {
         id="phone"
         value={phone}
         required
-        pattern="([+]?\d{1,2}[.-\s]?)?(\d{3}[.-\s]?){2}\d{3}" 
+        pattern="([+]?\d{1,2}[.\-\s]?)?(\d{3}[.\-\s]?){2}\d{3}" 
         inputMode="tel"
         onChange={handleChange}
       />
