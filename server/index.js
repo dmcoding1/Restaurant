@@ -66,10 +66,12 @@ app.post('/reservation', async (request, response) => {
             if (!client) {
                 const result = await db.exec(`INSERT INTO Clients(email) VALUES('${email}')`);
                 console.log(result);
+                response.send(result);
             } else {
                 console.log(`INSERT INTO Reservation(client_id, reservation_time) VALUES(${client.id}, '${reservationDate}')`);
                 const result = await db.exec(`INSERT INTO Reservation(client_id, reservation_time) VALUES(${client.id}, '${reservationDate}')`);
                 console.log("insert reservation", result);
+                response.send(result);
             }
         } else {
             response.send({message: "Not a chance!"});
