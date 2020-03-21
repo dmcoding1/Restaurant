@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import L from "leaflet/dist/leaflet.js";
 import "leaflet/dist/leaflet.css";
 import "./styles.scss";
-const key = "";
+import key from "../../key";
 
 const Location = () => {
 
@@ -42,7 +42,7 @@ const Location = () => {
             <div className="location__heading">Location</div>
             <div className="location__text">Fresh Italian<br />
             718 W Meadowbrook Dr<br />Midland, Michigan 48640<br />
-            TEL: 989-638-5139
+            TEL: 989 638 5139
             </div>
           </div>
         </div> 

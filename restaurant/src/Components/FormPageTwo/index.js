@@ -15,27 +15,29 @@ const FormPageTwo = () => {
     setHour,
     setEmail,
     setName,
-    setPhone
+    setPhone,
+    setIsActive,
+    minDate
   } = useContext(ReservationContext);
 
   const handleSubmit = e => {
     e.preventDefault();
-    setIsLoading(true);
-    setCurrentFormPage(3);
-    setIsLoading(false);
+    postData();  
+    setIsActive(false); 
   };
 
   const handleCancel = e => {
     e.preventDefault();
     setIsLoading(true);
     setNumberOfPeople(2);
-    setDate(new Date());
+    setDate(minDate);
     setHour(null);
     setEmail("");
     setName("");
     setPhone();
     setCurrentFormPage(1);
     setIsLoading(false);
+    setIsActive(false);
   };
 
   return (
@@ -60,7 +62,6 @@ const FormPageTwo = () => {
             className="btn btn--confirm"
             type="submit"
             text="Book a table"
-            onClick={postData}
           />
           <Button
             className="btn btn--cancel"

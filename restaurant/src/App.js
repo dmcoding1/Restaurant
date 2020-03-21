@@ -24,7 +24,7 @@ const App = () => {
   }, [])
 
   useEffect(() => {
-    animateNavbar();
+      animateNavbar();        
   }, [])
 
   useEffect(() => {

@@ -1,4 +1,5 @@
 .reservation {
+  //position: relative;
   min-height: 100vh;
   overflow: hidden;
   background-position: left top;
@@ -6,6 +7,7 @@
   background-size: cover;
 
   &__container {
+    position: relative;
     height: 100%;
     width: 80%;
     max-width: 1140px;
@@ -187,16 +189,6 @@
       width: 90%;
     }
     
-    &__header {
-      margin: 0 2rem 4rem;
-      //margin-left: 0;
-      justify-content: center;
-    }
-    
-    &__heading {
-      font-size: 3.5rem;
-    }
-    
     &__form {
       width: 35rem;
       margin: 0 auto;
@@ -204,7 +196,8 @@
     
      &__input,
      &__select {
-      margin: 2rem 0 4rem;
+      margin: 2rem 0 2rem;
      }
+
   }
 }

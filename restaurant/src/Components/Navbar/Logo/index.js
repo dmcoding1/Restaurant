@@ -3,7 +3,7 @@ import "./styles.scss";
 
 const Logo = () => {
   return (
-    <a className="main-nav__logo" href="#home">
+    <a className="main-nav__logo" href="#home" title="Home" aria-label="Home">
       <span>Fresh</span>
       <span>Ita</span>
       <span>li</span>

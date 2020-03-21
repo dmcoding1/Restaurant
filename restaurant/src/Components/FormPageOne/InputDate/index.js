@@ -6,10 +6,15 @@ import "react-nice-dates/build/style.css";
 import "./styles.scss";
 
 const InputDate = () => {
-  const { currentDate, setDate } = useContext(ReservationContext);
+  const { currentDate, setDate, setIsActive, minDate  } = useContext(ReservationContext);
+
+  const handleChange = date => {
+    setIsActive(false);
+    setDate(date);
+  }
 
   return (
-    <DatePicker date={currentDate} onDateChange={setDate} locale={enGB} minimumDate={new Date()}>
+    <DatePicker date={currentDate} onDateChange={handleChange} locale={enGB} minimumDate={minDate}>
       {({ inputProps, focused }) => (
         <>
           <label htmlFor="date" className="reservation__label">
@@ -22,6 +27,7 @@ const InputDate = () => {
             className={
               "input" + (focused ? " -focused" : "") + " reservation__input"
             }
+            onChange={handleChange}
             {...inputProps}
           />
         </>

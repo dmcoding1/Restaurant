@@ -25,9 +25,8 @@ const Reservation = () => {
 
       <div className="reservation__container">
         {renderFormPage(context.currentFormPage)}
+        {context.isLoading && <Loader /> }
       </div>
-
-      {context.isLoading && <Loader /> }
       
     </section>
   );

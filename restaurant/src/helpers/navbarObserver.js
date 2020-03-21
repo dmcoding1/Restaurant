@@ -1,4 +1,9 @@
 const animateNavbar = () => {
+
+    let width = window.innerWidth;
+
+    if (width < 700) return;
+
     const nav = document.querySelector(".main-nav");
     const header = document.querySelector(".header");
 
@@ -19,6 +24,8 @@ const animateNavbar = () => {
     const observer = new IntersectionObserver(intersectionCallback, options);
 
     observer.observe(header);
+
+    
 }
 
 export default animateNavbar;

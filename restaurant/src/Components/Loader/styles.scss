@@ -1,6 +1,6 @@
 .reservation {
   &__backdrop {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -10,7 +10,7 @@
     align-items: center;
     z-index: 99;
     background: linear-gradient(to right, green, green 33%, white 33%, white 67%, red 67%, red 100%);
-    opacity: 0.3;
+    opacity: .5;
 
   }
 
@@ -40,7 +40,6 @@
     }
   }
 }
-
 
 @keyframes loader-animation {
   0% {

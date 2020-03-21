@@ -8,12 +8,13 @@ import ReservationContext from '../../Context/ReservationContext';
 
 
 const FormPageOne = () => {
-  const { setIsLoading, setCurrentFormPage } = useContext(ReservationContext);
+  const {setIsLoading, setCurrentFormPage, setIsActive } = useContext(ReservationContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
     setCurrentFormPage(2);
+    setIsActive(true);
     setIsLoading(false);
   }
 

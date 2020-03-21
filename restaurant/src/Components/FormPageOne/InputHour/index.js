@@ -4,31 +4,15 @@ import ReservationContext from "../../../Context/ReservationContext";
 const InputHour = () => {
   
 
-  const { currentDate, hour, setHour, takenHoursObj, getDataFromDb } = useContext(ReservationContext);
+  const { currentDate, hour, setHour, takenHours, getDataFromDb, earliestHour } = useContext(ReservationContext);
 
-  // const mockTableData = {
-  //   "12": true,
-  //   "13": true,
-  //   "15": true,
-  //   "20": true
-  // };
-
-
-  const getEarliestAvailableHour = (takenHours) => {
-    let min = 21;
-    for (let i = 12; i < 21; i++) {
-      if (takenHours && takenHours.includes(`${i}`)) continue;
-      if (i < min) min = i;
-    }
-
-    return min;
-  };
+  const takenHoursArr = Object.keys(takenHours);
 
   const handleChange = e => {
-    setHour(e.target.value);
+    setHour(+e.target.value);
   }
 
-  const generateHourInputs = (takenHours) => {
+  const generateHourInputs = () => {
     const output = [];
     for (let i = 12; i < 21; i++) {
       output.push(
@@ -39,8 +23,8 @@ const InputHour = () => {
           id={`${i === 12 ? 12 : (i - 12)}`}
           value={i}
           name="hour"
-          disabled={Object.keys(takenHoursObj).includes(`${i}:00`)}
-          checked={hour ? i === +hour : i === getEarliestAvailableHour(Object.keys(takenHoursObj))}
+          disabled={takenHoursArr.includes(`${i}:00`)}
+          checked={hour ? i === +hour : i === earliestHour}
           onChange={handleChange}
         />
       );
@@ -59,12 +43,7 @@ const InputHour = () => {
   };
 
   useEffect(() => {  
-    getDataFromDb();
-    console.log(takenHoursObj);
-    if (!hour) {
-      const defaultHour = getEarliestAvailableHour(Object.keys(takenHoursObj));
-      setHour(defaultHour);
-    }      
+    getDataFromDb();   
   }, [currentDate]);
 
   return (
@@ -75,7 +54,7 @@ const InputHour = () => {
           <div className="available">Available</div>
           <div className="taken">Taken</div>
         </legend>
-        {generateHourInputs(Object.keys(takenHoursObj))}
+        {generateHourInputs()}
       </div>
     </>
   );
