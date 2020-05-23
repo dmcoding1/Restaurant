@@ -2,6 +2,8 @@ import React from "react";
 import "./styles.scss";
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="footer" data-src="/images/footer-small.jpg">
       <div className="footer__content">
@@ -148,7 +150,7 @@ const Footer = () => {
             <span className="visually-hidden">Tripadvisor</span>
           </a>
         </div>
-        <p className="footer__copy">&copy; Fresh Italian 2020</p>
+        <p className="footer__copy">&copy; Fresh Italian {currentYear}</p>
       </div>
     </footer>
   );

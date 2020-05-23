@@ -11,7 +11,6 @@ import Footer from "./Components/Footer";
 import "intersection-observer";
 import hightlightSectionsOnScroll from "./helpers/sectionsObserver";
 import lazyLoadImages from "./helpers/imagesObserver";
-import animateNavbar from "./helpers/navbarObserver";
 
 const App = () => {
 
@@ -21,10 +20,6 @@ const App = () => {
 
   useEffect(() => {
     lazyLoadImages();
-  }, [])
-
-  useEffect(() => {
-      animateNavbar();        
   }, [])
 
   useEffect(() => {

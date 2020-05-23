@@ -76,6 +76,7 @@ const ReservationContextProvider = (props) => {
       setName,
       setEmail,
       setPhone,
+      phone,
       postData, 
       takenHours, 
       earliestHour,

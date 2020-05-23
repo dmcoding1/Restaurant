@@ -1,31 +1,28 @@
 const animateNavbar = () => {
+  const nav = document.querySelector(".main-nav");
+  const header = document.querySelector(".header");
 
-    let width = window.innerWidth;
+  const options = {
+    rootMargin: "-40% 0% 0% 0%",
+  };
 
-    if (width < 700) return;
+  const intersectionCallback = (entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) {
+        nav.classList.add("main-nav--narrow", "main-nav--back-animation");
+      } else {
+        nav.classList.remove("main-nav--narrow");
+      }
+    });
+  };
 
-    const nav = document.querySelector(".main-nav");
-    const header = document.querySelector(".header");
+  const observer = new IntersectionObserver(intersectionCallback, options);
 
-    const options = {
-      rootMargin: "-40% 0% 0% 0%"
-    };
-
-    const intersectionCallback = entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) {
-          nav.classList.add("main-nav--narrow", "main-nav--back-animation");
-        } else {
-          nav.classList.remove("main-nav--narrow");
-        }
-      })
-    };
-
-    const observer = new IntersectionObserver(intersectionCallback, options);
-
-    observer.observe(header);
-
-    
-}
+  if (window.innerWidth > 767) {
+    observer.observe(header)
+  } else {
+    observer.unobserve(header);
+  }  
+};
 
 export default animateNavbar;

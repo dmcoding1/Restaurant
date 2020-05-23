@@ -22,8 +22,8 @@ const FormPageOne = () => {
     <>
       <FormHeader heading="Make a reservation" />
       <form className="reservation__form" onSubmit={handleSubmit}>
-          <InputSelect />
           <InputDate />
+          <InputSelect />
           <InputHour />
           <Button className="btn" text="Get a table"/>
         </form>
