@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import ReservationContext from './ReservationContext';
 
+import hostname from '../config';
+
 const ReservationContextProvider = (props) => {
   const MILISECONDS_IN_A_DAY = 24 * 60 * 60 * 1000;
   const minDate = new Date(new Date() * 1 + MILISECONDS_IN_A_DAY);
@@ -24,7 +26,7 @@ const ReservationContextProvider = (props) => {
 
   const postData = async () => {
     setIsLoading(true);
-    await fetch("//localhost:3100/reservation", {
+    await fetch(`${hostname}/reservation`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
@@ -38,7 +40,7 @@ const ReservationContextProvider = (props) => {
   const getDataFromDb = () => {
     if (isActive) return;
     setIsLoading(true);    
-    fetch(`//localhost:3100/tables/available?reservationDate=${currentDate.getTime()}`)
+    fetch(`${hostname}/tables/available?reservationDate=${currentDate.getTime()}`)
       .then(res => res.json())
       .then(json => {
         let newHour = getEarliestAvailableHour(Object.keys(json));
@@ -74,6 +76,7 @@ const ReservationContextProvider = (props) => {
       setHour,
       name,
       setName,
+      email,
       setEmail,
       setPhone,
       phone,
