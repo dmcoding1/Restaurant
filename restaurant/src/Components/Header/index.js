@@ -4,6 +4,7 @@ import "./styles.scss";
 const Header = () => {
 
   const handleMouseMove = (e) => {
+    if (window.innerWidth < 767) return;
     const headerWidth = e.target.parentNode.offsetWidth;
     const headerHeight = e.target.parentNode.offsetHeight;
 
