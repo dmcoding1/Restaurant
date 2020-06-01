@@ -21,13 +21,21 @@
   .reservation {
     
     &__header {
-      width: 100%;
-      margin: 0 0 4rem;
+      width: 35rem;
+      margin: 0 auto 4rem;
     }
     
     &__heading {
       font-size: 3.5rem;
+    }
+
+    &__text-container {
+      width: 35rem;
       margin: 0 auto;
+    }
+
+    &__text {
+      width: 100%;
     }
   }
 }
