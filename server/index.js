@@ -1,12 +1,14 @@
+const path = require("path");
 const sqlite = require("sqlite");
 const express = require('express');
 const cors = require('cors');
-
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 const port = process.env.PORT || 3100;
+
+app.use('/', express.static(path.join(__dirname, './../restaurant/build')));
 
 app.get('/tables', async (request, response) => {
     const db = await sqlite.open("./db/database.sqlite");
@@ -86,5 +88,4 @@ app.post('/reservation', async (request, response) => {
 });
 
 
-app.listen(port);
-console.log("Server ready!");
+app.listen(port, () => console.log(`Server started on port ${port}`));
