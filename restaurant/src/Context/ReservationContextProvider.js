@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import ReservationContext from './ReservationContext';
+import React, { useState } from "react";
+import ReservationContext from "./ReservationContext";
 
-import hostname from '../config';
+import hostname from "../config";
 
 const ReservationContextProvider = (props) => {
   const MILISECONDS_IN_A_DAY = 24 * 60 * 60 * 1000;
@@ -21,34 +21,41 @@ const ReservationContextProvider = (props) => {
   const reservationData = {
     email,
     capacity: numberOfPeople,
-    timestamp: currentDate.setHours(0, 0, 0, 0) + (hour ? hour * 60 * 60 * 1000 : 0)
-  }
+    timestamp:
+      currentDate.setHours(0, 0, 0, 0) + (hour ? hour * 60 * 60 * 1000 : 0),
+  };
 
-  const postData = async () => {
+  const postData = () => {
     setIsLoading(true);
-    await fetch(`${hostname}/reservation`, {
+    fetch(`${hostname}/reservation`, {
       method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(reservationData)
+      body: JSON.stringify(reservationData),
     })
-      setCurrentFormPage(3);
-      setIsLoading(false);
-  }
+      .then((res) => {
+        setCurrentFormPage(3);
+        setIsLoading(false);
+      })
+      .catch((err) => console.log(err));
+  };
 
   const getDataFromDb = () => {
     if (isActive) return;
-    setIsLoading(true);    
-    fetch(`${hostname}/tables/available?reservationDate=${currentDate.getTime()}`)
-      .then(res => res.json())
-      .then(json => {
+    setIsLoading(true);
+    fetch(
+      `${hostname}/tables/available?reservationDate=${currentDate.getTime()}`
+    )
+      .then((res) => res.json())
+      .then((json) => {
         let newHour = getEarliestAvailableHour(Object.keys(json));
         setEarliestHour(getEarliestAvailableHour(Object.keys(json)));
         setTakenHours(json);
         setIsLoading(false);
-        setHour(newHour);       
-      });
+        setHour(newHour);
+      })
+      .catch((err) => console.log(err));
   };
 
   const getEarliestAvailableHour = (hoursArray) => {
@@ -62,33 +69,35 @@ const ReservationContextProvider = (props) => {
   };
 
   return (
-    <ReservationContext.Provider value={{
-      currentFormPage,
-      setCurrentFormPage,
-      isLoading,
-      setIsLoading,
-      getDataFromDb,
-      numberOfPeople,
-      setNumberOfPeople,
-      currentDate,
-      setDate,
-      hour,
-      setHour,
-      name,
-      setName,
-      email,
-      setEmail,
-      setPhone,
-      phone,
-      postData, 
-      takenHours, 
-      earliestHour,
-      setIsActive,
-      minDate
-    }}>
+    <ReservationContext.Provider
+      value={{
+        currentFormPage,
+        setCurrentFormPage,
+        isLoading,
+        setIsLoading,
+        getDataFromDb,
+        numberOfPeople,
+        setNumberOfPeople,
+        currentDate,
+        setDate,
+        hour,
+        setHour,
+        name,
+        setName,
+        email,
+        setEmail,
+        setPhone,
+        phone,
+        postData,
+        takenHours,
+        earliestHour,
+        setIsActive,
+        minDate,
+      }}
+    >
       {props.children}
     </ReservationContext.Provider>
-  )
-}
+  );
+};
 
 export default ReservationContextProvider;
