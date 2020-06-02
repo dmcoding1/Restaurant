@@ -13,16 +13,16 @@ const Navbar = () => {
   const handleMenu = () => {
     animateNavbar();
 
-    if (window.innerWidth < 768) {
-      const hamburger = hamburgerButton.current;
-      const nav = mainNav.current;
+    const hamburger = hamburgerButton.current;
+    const nav = mainNav.current;
 
+    hamburger.addEventListener("click", (e) => {
+      hamburger.classList.toggle("open");
+      nav.classList.toggle("open");
+    });
+
+    if (window.innerWidth < 768) {    
       nav.classList.remove("main-nav--narrow", "main-nav--back-animation");
-
-      hamburger.addEventListener("click", (e) => {
-        hamburger.classList.toggle("open");
-        nav.classList.toggle("open");
-      });
     }
   };
 

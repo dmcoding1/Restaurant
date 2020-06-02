@@ -1,5 +1,4 @@
 .reservation {
-  //position: relative;
   min-height: 100vh;
   overflow: hidden;
   background-position: left top;
@@ -197,6 +196,10 @@
      &__input,
      &__select {
       margin: 2rem 0 2rem;
+     }
+
+     &__legend {
+       display: none;
      }
 
   }
