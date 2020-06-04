@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import MenuCard from "./MenuCard";
+import useSectionObserver from "../../hooks/useSectionObserver";
 import { dinners, desserts, drinks } from "../../data/menu.js";
 import "./styles.scss";
 
@@ -38,6 +39,8 @@ const Menu = () => {
   useEffect(() => {
     imageContainer.current.style.backgroundImage = `url("/images/menu.jpg")`;
   }, []);
+
+  useSectionObserver(imageContainer);
 
   return (
     <section className="menu" id="menu" ref={imageContainer}>

@@ -1,7 +1,7 @@
-const highlightSectionsOnScroll = () => {
-  
-  const sections = document.querySelectorAll("section");
-  const navLinks = document.querySelectorAll(".main-nav__link a");
+const highlightSectionsOnScroll = (sectionNode) => {
+
+  const navLi = sectionNode.current.parentNode.children[1].children[0].children[1].children[0].children;
+  const navLinks = [...navLi].map(li => li.children[0]);
 
   const observerCallback = (entries, observer) => {
     entries.forEach(entry => {
@@ -21,10 +21,9 @@ const highlightSectionsOnScroll = () => {
 
   const observer = new IntersectionObserver(observerCallback, options);
 
-  sections.forEach(section => {
-    observer.observe(section);
-  });
+  observer.observe(sectionNode.current);
 
+  return observer;
 }
 
 export default highlightSectionsOnScroll;

@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useRef } from "react";
+import Image from "../shared/Image";
+import useSectionObserver from "../../hooks/useSectionObserver";
 import "./styles.scss";
 
 const Team = () => {
+  const teamSection = useRef();
+
+  useSectionObserver(teamSection);
 
   return (
-    <section className="team" id="team">
+    <section className="team" id="team" ref={teamSection}>
       <div className="team__container">
         <h2 className="team__heading">Our team</h2>
         <div className="team__content">
@@ -16,11 +21,7 @@ const Team = () => {
               ribeye shoulder.
             </p>
           </div>
-          <img
-            className="team__image"
-            data-src="/images/cook1.jpg"
-            alt="Cook"
-          />
+          <Image className="team__image" src="/images/cook1.jpg" alt="Cook" />
           <div className="team__member">
             <p className="team__name">Barry Tone</p>
             <p className="team__description">
@@ -29,11 +30,7 @@ const Team = () => {
               pork salami ground round ribeye.
             </p>
           </div>
-          <img
-            className="team__image"
-            data-src="/images/cook2.jpg"
-            alt="Cook"
-          />
+          <Image className="team__image" src="/images/cook2.jpg" alt="Cook" />
           <div className="team__member">
             <p className="team__name">Piff Jenkins</p>
             <p className="team__description">
@@ -42,11 +39,7 @@ const Team = () => {
               landjaeger meatball tail kevin short ribs.
             </p>
           </div>
-          <img
-            className="team__image"
-            data-src="/images/cook3.jpg"
-            alt="Cook"
-          />
+          <Image className="team__image" src="/images/cook3.jpg" alt="Cook" />
           <div className="team__member">
             <p className="team__name">Girth Wiedenbauer</p>
             <p className="team__description">
@@ -55,11 +48,7 @@ const Team = () => {
               tip shoulder pork.
             </p>
           </div>
-          <img
-            className="team__image"
-            data-src="/images/cook4.jpg"
-            alt="Cook"
-          />
+          <Image className="team__image" src="/images/cook4.jpg" alt="Cook" />
         </div>
       </div>
     </section>

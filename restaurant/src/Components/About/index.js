@@ -1,23 +1,30 @@
-import React from "react";
+import React, { useRef } from "react";
+import Image from "../shared/Image";
+import useSectionObserver from "../../hooks/useSectionObserver";
+
 import "./styles.scss";
 
 const About = () => {
+  const aboutSection = useRef();
+
+  useSectionObserver(aboutSection);
+
   return (
-    <section className="about" id="about">
+    <section className="about" id="about" ref={aboutSection}>
       <div className="about__content">
         <div className="about__text-container">
           <header className="about__heading">Our Story</header>
           <p className="about__main-paragraph">
-            <span className="color-1">Turnip</span> greens yarrow ricebean rutabaga
-            endive cauliflower sea lettuce.
+            <span className="color-1">Turnip</span> greens yarrow ricebean
+            rutabaga endive cauliflower sea lettuce.
           </p>
           <p className="about__sub-paragraph">
             Cabbage asparagus winter purslane kale. Celery potato scallion
             desert raisin horseradish spinach carrot soko.
           </p>
           <p className="about__main-paragraph about__main-paragraph--color">
-            <span className="color-2">Horseradish</span> azuki bean lettuce avocado
-            asparagus okra.
+            <span className="color-2">Horseradish</span> azuki bean lettuce
+            avocado asparagus okra.
           </p>
           <p className="about__sub-paragraph">
             Fennel gumbo black-eyed pea. Grape silver beet watercress potato
@@ -33,7 +40,7 @@ const About = () => {
           </p>
         </div>
       </div>
-      <div className="about__image" data-src="/images/about.jpeg"></div>
+      <Image className="about__image" src="/images/about.jpeg" type="div" />
     </section>
   );
 };

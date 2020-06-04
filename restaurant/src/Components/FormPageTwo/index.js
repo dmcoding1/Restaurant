@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import InputName from "./InputName";
 import InputEmail from "./InputEmail";
 import InputPhone from "./InputPhone";
-import Button from "../Button";
+import Button from "../shared/Button";
 import ReservationContext from "../../Context/ReservationContext";
 
 const FormPageTwo = () => {

@@ -1,9 +1,15 @@
 import React from "react";
 import "./styles.scss";
 
-const Logo = () => {
+const Logo = ({ onClick }) => {
   return (
-    <a className="main-nav__logo" href="#home" title="Home" aria-label="Home">
+    <a
+      aria-label="Home"
+      className="main-nav__logo"
+      href="#home"
+      onClick={onClick}
+      title="Home"
+    >
       <span>Fresh</span>
       <span>Ita</span>
       <span>li</span>

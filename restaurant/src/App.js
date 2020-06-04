@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Header from "./Components/Header";
 import Navbar from "./Components/Navbar";
 import Reservation from "./Components/Reservation";
@@ -9,37 +9,22 @@ import Team from "./Components/Team";
 import Location from "./Components/Location";
 import Footer from "./Components/Footer";
 import "intersection-observer";
-import hightlightSectionsOnScroll from "./helpers/sectionsObserver";
-import lazyLoadImages from "./helpers/imagesObserver";
 
 const App = () => {
-
-  useEffect(() => {
-    hightlightSectionsOnScroll();
-  }, [])
-
-  useEffect(() => {
-    lazyLoadImages();
-  }, [])
-
-  useEffect(() => {
-    window.ondragstart = () => false;
-  }, [])
-
   return (
     <>
       <Navbar />
       <Header />
       <Menu />
       <About />
-      <Team />      
+      <Team />
       <ReservationContextProvider>
         <Reservation />
-      </ReservationContextProvider> 
+      </ReservationContextProvider>
       <Location />
-      <Footer />  
+      <Footer />
     </>
   );
-}
+};
 
 export default App;

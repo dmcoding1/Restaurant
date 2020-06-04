@@ -1,11 +1,16 @@
-import React from "react";
+import React, {useRef} from "react";
+import useImageObserver from "../../hooks/useImageObserver"
 import "./styles.scss";
 
 const Footer = () => {
+  const footer = useRef();
+
+  useImageObserver(footer);
+
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="footer" data-src="/images/footer-small.jpg">
+    <footer className="footer" data-src="/images/footer-small.jpg" ref={footer}>
       <div className="footer__content">
         <div className="footer__logo">
           <span>Fresh</span>

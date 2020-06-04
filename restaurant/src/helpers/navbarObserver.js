@@ -1,6 +1,4 @@
-const animateNavbar = () => {
-  const nav = document.querySelector(".main-nav");
-  const header = document.querySelector(".header");
+const animateNavbar = (nav, header) => {
 
   const options = {
     rootMargin: "-40% 0% 0% 0%",
@@ -23,6 +21,7 @@ const animateNavbar = () => {
   } else {
     observer.unobserve(header);
   }  
+
 };
 
 export default animateNavbar;

@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import FormHeader from '../FormHeader'
+import FormHeader from '../shared/FormHeader'
 import InputSelect from './InputSelect';
 import InputDate from './InputDate';
 import InputHour from './InputHour';
-import Button from '../Button';
+import Button from '../shared/Button';
 import ReservationContext from '../../Context/ReservationContext';
 
 
