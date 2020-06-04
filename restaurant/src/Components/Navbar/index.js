@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import Logo from "./Logo";
 import MainNav from "./MainNav";
@@ -10,13 +10,10 @@ const Navbar = () => {
   const hamburgerButton = useRef();
   const mainNav = useRef();
 
+  const [sideMenuOpen, setSideMenuOpen] = useState(false);
+
   const handleMenu = () => {
     animateNavbar(mainNav.current, mainNav.current.nextElementSibling);
-
-    hamburgerButton.current.addEventListener("click", (e) => {
-      hamburgerButton.current.classList.toggle("open");
-      mainNav.current.classList.toggle("open");
-    });
 
     if (window.innerWidth < 768) {
       mainNav.current.classList.remove(
@@ -28,29 +25,27 @@ const Navbar = () => {
 
   const hideMenu = () => {
     if (window.innerWidth < 768) {
-      mainNav.current.classList.toggle("open");
-      hamburgerButton.current.classList.toggle("open");
+      setSideMenuOpen(false);
     }
   };
 
   useEffect(() => {
-    window.addEventListener("DOMContentLoaded", handleMenu);
+    handleMenu();
     window.addEventListener("resize", handleMenu);
 
     return () => {
-      window.removeEventListener("DOMContentLoaded", handleMenu);
       window.removeEventListener("resize", handleMenu);
     };
   }, []);
 
   return (
     <>
-      <button className="hamburger-button" ref={hamburgerButton}>
-        <span className="hamburger-button__line"></span>
-        <span className="hamburger-button__line"></span>
-        <span className="hamburger-button__line"></span>
+      <button className="hamburger-button" ref={hamburgerButton} onClick={() => setSideMenuOpen(!sideMenuOpen)}>
+        <span className={`hamburger-button__line ${sideMenuOpen && "open"}`}></span>
+        <span className={`hamburger-button__line ${sideMenuOpen && "open"}`}></span>
+        <span className={`hamburger-button__line ${sideMenuOpen && "open"}`}></span>
       </button>
-      <nav className="main-nav" ref={mainNav}>
+      <nav className={`main-nav ${sideMenuOpen && "open"}`} ref={mainNav}>
         <div className="main-nav__container">
           <Logo onClick={hideMenu} />
           <MainNav onClick={hideMenu} />
