@@ -193,14 +193,22 @@
       margin: 0 auto;
     }
     
-     &__input,
-     &__select {
+    &__input,
+    &__select {
       margin: 2rem 0 2rem;
-     }
+    }
 
-     &__legend {
-       display: none;
-     }
+    &__legend {
+      display: none;
+    }
+
+    &__text-container {
+      margin: 0 auto;
+    }
+
+    &__text {
+      width: auto;
+    }
 
   }
 }
